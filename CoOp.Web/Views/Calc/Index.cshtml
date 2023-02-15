@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<b-container>
+    
+    <div class="jumbotron mt-3">
+        <h1 class="display-5">@Localizer["Call.Title"]</h1>
+        <p class="lead">@Localizer["Call.Description"]</p>
+    </div>
+
+    <b-form-group horizontal :label-cols="4" label="@Localizer["ImmovablesValue.Label"]" :description="ImmovablesValue.toString() + ' рублей'">
+        <b-form-input type="range" min="40000" max="100000" step="5000" v-model="ImmovablesValue" v-on:change="sliderChange"></b-form-input>
+    </b-form-group>
+
+    <b-form-group horizontal :label-cols="4" label="@Localizer["TermInYears.Label"]" :description="TermInYears.toString() + ' лет'">
+        <b-form-input type="range" min="10" max="25" step="5" v-model="TermInYears" v-on:change="sliderChange"></b-form-input>
+    </b-form-group>
+
+        
+    <b-card-group deck>
+
+        <b-card header-tag="header">
+            <template v-slot:header>
+                <h6 class="mb-0">Банк</h6>
+            </template>
+                
+            <div style="min-height: 10rem;">
+            <b-form-group horizontal :label-cols="6" label="@Localizer["BankInterestRate.Label"]" :description="BankInterestRate.toString() + ' %'">
+                <b-form-input type="range" min="12" max="20" step="1" v-model="BankInterestRate" v-on:change="sliderChange"></b-form-input>
+            </b-form-group>
+            </div>
+
+            <h3>Итого:
+                <b class="text-danger">{{BankTotalPayments}}</b></h3>
+            <p>Переплата: <b class="text-danger">{{BankOverPaymentString}}</b>, дороже в <b class="text-danger">{{OverPaymentTimesString}}</b> раз</p>
+                                                          
+            <table class="table table-hover table-striped d-none">
+                @*
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">@Localizer["Table.Header.Date"]</th>
+                                            <th scope="col">@Localizer["Table.Header.MainDebt"]</th>
+                                            <th scope="col">@Localizer["Table.Header.Percent"]</th>
+                                            <th scope="col">@Localizer["Table.Header.Total"]</th>
+                                        </tr>
+                                        </thead>
+                                        *@
+                <tbody>
+                <tr is="payment-item"
+                    v-for="item in BankMonthlyPayments"
+                    v-bind:p="item"
+                    v-bind:key="item.Number">
+                </tr>
+                </tbody>
+            </table>
+        </b-card>
+
+        <b-card header-tag="header">
+            <template v-slot:header>
+                <h6 class="mb-0">Кооператив</h6>
+            </template>
+            <div style="min-height: 10rem;">    
+                <b-form-group horizontal :label-cols="6" label="@Localizer["InflationRate.Label"]" :description="CoopInflationRate.toString() + ' %'">
+                    <b-form-input type="range" min="1" max="6" step="1" v-model="CoopInflationRate" v-on:change="sliderChange"></b-form-input>
+                </b-form-group>
+                
+                
+                <b-form-group horizontal :label-cols="6" label="@Localizer["AccumulationTime.Label"]">
+                    <b-form-input type="range" min="0" :max="TermInYears*12/2" step="1" v-model="AccumulationTime" v-on:change="sliderChange"></b-form-input>
+                    <small tabindex="-1" class="form-text text-muted"><b>{{AccumulationTime}}</b> @Localizer["Months.Label"],
+                        <b>{{CoopInterestRateString}}</b> @Localizer["MonthlyUsagePercentage.Desciption"]</small>
+                </b-form-group>
+            </div>
+            
+            <h3>Итого:
+                <b class="text-success">{{CoopTotalPayments}}</b></h3>
+            <p>Переплата: <b class="text-success">{{CoopOverPaymentString}}</b>, дешевле в <b class="text-success">{{OverPaymentTimesString}}</b> раз</p>
+                                    
+                                    
+            <table class="table table-hover table-striped d-none">
+                @*
+                                                                                      <thead>
+                                                                                      <tr>
+                                                                                          <th scope="col">#</th>
+                                                                                          <th scope="col">@Localizer["Table.Header.Date"]</th>
+                                                                                          <th scope="col">@Localizer["Table.Header.MainDebt"]</th>
+                                                                                          <th scope="col">@Localizer["Table.Header.Percent"]</th>
+                                                                                          <th scope="col">@Localizer["Table.Header.Total"]</th>
+                                                                                      </tr>
+                                                                                      </thead>
+                                                                                      *@
+                <tbody>
+                <tr is="payment-item"
+                    v-for="item in CoopMonthlyPayments"
+                    v-bind:p="item"
+                    v-bind:key="item.Number">
+                </tr>
+                </tbody>
+            </table>
+        </b-card>
+            
+            
+    </b-card-group>
+        
+       
+</b-container>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/calc.index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/calc.index.min.js" asp-append-version="true"></script>
+    </environment>
+}

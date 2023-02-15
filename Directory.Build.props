@@ -1,0 +1,6 @@
+<Project>
+    <PropertyGroup>
+        <UseSharedCompilation>false</UseSharedCompilation>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+</Project>

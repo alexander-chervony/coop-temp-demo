@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<h1>h1: hello</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <h2>h2: hello</h2>
+    @if ((await AuthorizationService.AuthorizeAsync(User, "ActivePaidMember")).Succeeded)
+    {
+      <h3>h3: hello</h3>
+        <b-table
+                    id="my-payments-table"
+                    :busy.sync="isBusy"
+                    :items="myPaymentsProvider"
+                    :fields="fields"
+                ></b-table>
+    }
+}
+
+
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/js/Vue/home.index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/home.index.min.js" asp-append-version="true"></script>
+    </environment>
+}

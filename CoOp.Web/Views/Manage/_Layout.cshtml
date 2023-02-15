@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{ 
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<b-container>
+    <h1>@Localizer["Title.Text"]</h1>
+    <div class="row mt-4 mb-4">
+        <div class="col-md-4">
+            @await Html.PartialAsync("_ManageNav")
+        </div>
+        <div class="col-md-8">
+            @RenderBody()
+        </div>
+    </div>
+</b-container>
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/manage.index.js" asp-append-version="true"></script>
+    </environment>
+    
+    <environment names="Staging,Production">
+        <script src="~/js/manage.index.min.js" asp-append-version="true"></script>
+    </environment>
+    
+    @RenderSection("Scripts", required: false)
+}
+        

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="EventFlow" Version="0.77.4077" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\CoOp.Domain.Queries.InMemory\CoOp.Domain.Queries.InMemory.csproj" />
+      <ProjectReference Include="..\CoOp.Domain\CoOp.Domain.csproj" />
+    </ItemGroup>
+</Project>

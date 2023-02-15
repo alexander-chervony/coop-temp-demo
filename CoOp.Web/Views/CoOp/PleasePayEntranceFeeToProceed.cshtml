@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="card text-center">
+    <div class="card-header">
+        Please pay entrance fee
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Оплата входного билета</h5>
+        <p class="card-text">
+            Для доступа к личному кабинету участника кооператива необходимо внести вступительный взнос согласно установленным правилам.
+            Информация о проведенном платеже становится доступна в системе как правило на следующий рабочий день.
+            Внести деньги можно в любом банке, но если внесете деньги в банке ХХХ, то платеж пройдет быстрее.
+        </p>
+        <a href="#" class="btn btn-primary">Оплатить</a>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@inject IViewLocalizer Localizer
+
+@{
+    // получаем сервис IRequestCultureFeature
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    // получаем список поддерживаемых культур
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => 
+            new
+            {
+                Value = c.Name, 
+                ShortLabel = Localizer[$"{c.Name}_Short"].Value, 
+                LongLabel = Localizer[$"{c.Name}_Long"].Value,
+                Active = @requestCulture.RequestCulture.UICulture.Name == c.Name
+            });
+}
+
+<b-nav-item-dropdown text="@Localizer[$"{@requestCulture.RequestCulture.UICulture.Name}_Short"]" right>
+    @foreach (var culture in cultureItems)
+    {
+        @if (culture.Active)
+        {
+            <b-dropdown-item><strong>@culture.LongLabel</strong></b-dropdown-item>
+        }
+        else
+        {
+            <b-dropdown-item href="/Language/SetLanguage?culture=@culture.Value&returnUrl=@Context.Request.Path">@culture.LongLabel</b-dropdown-item>    
+        }
+        
+    } 
+</b-nav-item-dropdown>
+
+

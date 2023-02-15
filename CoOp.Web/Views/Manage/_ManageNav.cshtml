@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+    <b-nav vertical pills>
+        <b-nav-item @ManageNavPages.IndexNavClass(ViewContext) href="/Manage/Index">@Localizer["Button.Profile"]</b-nav-item>
+        <b-nav-item @ManageNavPages.ChangePasswordNavClass(ViewContext) href="/Manage/ChangePassword">@Localizer["Button.ChangePassword"]</b-nav-item>
+        @if (hasExternalLogins)
+        {
+            <b-nav-item @ManageNavPages.ExternalLoginsNavClass(ViewContext) href="/Manage/ExternalLogins">@Localizer["Button.ExtLink"]</b-nav-item>
+        }
+        @*<b-nav-item @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) href="/Manage/TwoFactorAuthentication">2FA</b-nav-item>*@
+    </b-nav>
+

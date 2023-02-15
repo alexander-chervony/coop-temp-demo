@@ -1,0 +1,81 @@
+﻿@model RegisterViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-xl-7 mx-auto">
+          <div class="card card-signin flex-row my-5">
+              
+              <div class="card-body">
+                  <h5 class="card-title text-center">@Localizer["Form.Title"]</h5>
+                  
+                  <div asp-validation-summary="All" class="text-danger"></div>
+                  
+                  <form class="form-signin" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+
+                      <div class="form-label-group">
+                          <input asp-for="Email" type="email" class="form-control" placeholder="@Localizer["Form.Email.Placeholder"]">
+                          <label asp-for="Email">@Localizer["Form.Email.Placeholder"]</label>
+                          <span asp-validation-for="Email" class="text-danger"></span>
+                      </div>
+
+                      <div class="form-label-group">
+                          <input asp-for="Password" type="password" class="form-control" placeholder="@Localizer["Form.Password.Placeholder"]">
+                          <label asp-for="Password">@Localizer["Form.Password.Placeholder"]</label>
+                          <span asp-validation-for="Password" class="text-danger"></span>
+                      </div>
+
+                      <div class="form-label-group">
+                          <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="@Localizer["Form.ConfirmPassword.Placeholder"]">
+                          <label asp-for="ConfirmPassword">@Localizer["Form.ConfirmPassword.Placeholder"]</label>
+                          <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                      </div>
+
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">@Localizer["Form.Button.Register.Text"]</button>
+                      <a class="d-block text-center mt-2" href="/Account/Login">@Localizer["Form.Link.SignIn.Text"]</a>
+                      <hr class="my-4">
+                      @{
+                          var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                          @foreach (var provider in loginProviders)
+                          {
+                              if (provider.Name.Equals("Google"))
+                              {
+                                  <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit" name="provider" value="@provider.Name">
+                                      <i class="fab fa-google mr-2"></i> @Localizer["Form.Button.RegisterWithGoogle.Text"]
+                                  </button>
+                              }
+                              else if (provider.Name.Equals("Vkontakte"))
+                              {
+                                  <button class="btn btn-lg btn-vk btn-block text-uppercase" type="submit" name="provider" value="@provider.Name">
+                                      <i class="fab fa-vk mr-2"></i> @Localizer["Form.Button.RegisterWithVkontakte.Text"]
+                                  </button>
+                              }
+                              else if (provider.Name.Equals("Odnoklassniki"))
+                              {
+                                  <button class="btn btn-lg btn-odnoklassniki btn-block text-uppercase" type="submit" name="provider" value="@provider.Name">
+                                      <i class="fab fa-odnoklassniki mr-2"></i> @Localizer["Form.Button.RegisterWithOdnoklassniki.Text"]
+                                  </button>
+                              }
+                              else
+                              {
+                                  <button type="submit" class="btn btn-default" name="provider" value="@provider.Name">
+                                      @provider.Name
+                                  </button>
+                              }
+                          }
+                      }
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

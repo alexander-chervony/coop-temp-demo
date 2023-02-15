@@ -1,0 +1,102 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/calc.index.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/calc.index.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/coop.displayMembers.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/coop.displayMembers.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/coop.registerMember.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/coop.registerMember.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/js/coop.addFirstImmovables.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/coop.addFirstImmovables.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/js/coop.showPayments.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/coop.showPayments.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/js/home.index.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/home.index.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/js/coop.applyForCredit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Vue/coop.applyForCredit.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+
+
+]

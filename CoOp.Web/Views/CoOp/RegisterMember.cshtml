@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+<b-container>
+<h1>@ViewData["Title"]</h1>
+</b-container>
+
+<b-container>
+    <b-card bg-variant="light" class="mt-3">
+
+        <b-form-group label-cols-lg="4"
+                      label="@Localizer["Form.Contact.Title"]"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0"
+                      >
+            <v-input id="FirstName"></v-input>
+            <v-input id="MiddleName"></v-input>
+            <v-input id="LastName"></v-input>
+            <v-input id="CellPhoneNumber" type="tel"></v-input>
+            <v-input id="Email" type="email"></v-input>
+        </b-form-group>
+        
+        <b-form-group label-cols-lg="4"
+                      label="@Localizer["Form.Document.Title"]"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0"
+        >
+            <v-select   id="DocumentType"></v-select>
+            <v-input    id="BirthDate" type="date"></v-input>
+            <v-input    id="PassportSn"></v-input>
+            <v-input    id="PassportPn"></v-input>
+            <v-input    id="PassportIssuedBy"></v-input>
+            <v-input    id="PassportIssuedDate" type="date"></v-input>
+            <v-input    id="PassportExpDate" type="date"></v-input>
+            <v-textarea id="Address"></v-textarea>
+        </b-form-group>
+        
+    </b-card>
+</b-container>
+
+<b-container class="mt-3">
+    <b-row class="text-center">
+        <b-col>
+            <b-button variant="primary" v-on:click="registerMember" id="registerMember">@Localizer["Button.RegisterMember"]</b-button>
+        </b-col>
+    </b-row>
+</b-container>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/coop.registerMember.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/coop.registerMember.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+

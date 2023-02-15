@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<b-container>
+<b-card-group deck class="mt-5">
+    <b-card no-body class="shadow-lg">
+        <b-card-body>
+            <b-card-title>ШАГ 1</b-card-title>
+            <b-card-sub-title class="mb-3 mt-2">Регистрация</b-card-sub-title>
+            <b-card-text class="mb-1">
+                Это позволит:
+            </b-card-text>
+            
+            <b-list-group flush class="mb-3">
+                <b-list-group-item class="p-0 border-0"><small>&mdash; добавлять объекты недвижимости</small></b-list-group-item>
+                <b-list-group-item class="p-0 border-0"><small>&mdash; приглашать участников</small></b-list-group-item>
+                <b-list-group-item class="p-0 border-0"><small>&mdash; и пользоваться преимуществом</small></b-list-group-item>
+            </b-list-group>
+            <b-button variant="warning" href="/Account/Register">Регистрация</b-button>
+            <b-button variant="link" href="/Account/Login">Вход</b-button>
+        </b-card-body>
+    </b-card>
+
+        <b-card no-body class="shadow-lg">
+            <b-card-body>
+                <b-card-title>ШАГ 2</b-card-title>
+                <b-card-sub-title class="mb-3 mt-2">Стать одним из нас</b-card-sub-title>
+                <b-card-text class="mb-1">
+                    Это позволит:
+                </b-card-text>
+                
+                <b-list-group flush class="mb-3">
+                    
+                    <b-list-group-item class="p-0 border-0"><small>&mdash; отслеживать место в очереди</small></b-list-group-item>
+                    <b-list-group-item class="p-0 border-0"><small>&mdash; видеть финансы кооператива</small></b-list-group-item>
+                    <b-list-group-item class="p-0 border-0"><small>&mdash; приглашать участников</small></b-list-group-item>
+                    <b-list-group-item class="p-0 border-0"><small>&mdash; и пользоваться преимуществом</small></b-list-group-item>
+                </b-list-group>
+                <b-button variant="warning">Приступить</b-button>
+            </b-card-body>
+        </b-card>
+
+    
+    <b-card no-body class="shadow-lg">
+        <b-card-body>
+            <b-card-title>ШАГ 2</b-card-title>
+            <b-card-sub-title class="mb-2">Заключение договора</b-card-sub-title>
+            <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+            </b-card-text>
+        </b-card-body>
+    </b-card>
+
+    <b-card no-body class="shadow-lg">
+        <b-card-body>
+            <b-card-title>ШАГ 3</b-card-title>
+            <b-card-sub-title class="mb-2">Вступительный взнос</b-card-sub-title>
+            <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+            </b-card-text>
+        </b-card-body>
+    </b-card>
+
+    
+</b-card-group>
+</b-container>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/home.index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/home.index.min.js" asp-append-version="true"></script>
+    </environment>
+}

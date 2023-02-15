@@ -1,0 +1,4 @@
+c:
+cd C:\Users\Administrator\Desktop\publish
+SET ASPNETCORE_ENVIRONMENT=Development
+CoOp.Web.exe --urls="http://0.0.0.0:80"

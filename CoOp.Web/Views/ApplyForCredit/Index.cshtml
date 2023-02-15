@@ -1,0 +1,89 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<b-container>
+    <b-card bg-variant="light" class="mt-3">
+
+        <b-form-group label-cols-lg="4"
+                      label="@Localizer["Form.Contact.Title"]"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0"
+                      >
+            <v-input id="Fio"></v-input>
+            <v-input id="LastNameOld"></v-input>
+            <v-input id="CellPhoneNumber" type="tel"></v-input>
+        </b-form-group>
+        
+        <b-form-group label-cols-lg="4"
+                      label="@Localizer["Form.Document.Title"]"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0"
+        >
+            <v-select   id="DocumentType"></v-select>
+            <v-input    id="BirthDate" type="date"></v-input>
+            <v-input    id="PassportSn"></v-input>
+            <v-input    id="PassportPn"></v-input>
+            <v-input    id="PassportIssuedBy"></v-input>
+            <v-input    id="PassportIssuedDate" type="date"></v-input>
+            <v-input    id="PassportExpDate" type="date"></v-input>
+            <v-textarea id="Address"></v-textarea>
+        </b-form-group>
+
+
+        <b-form-group label-cols-lg="4"
+                      label="@Localizer["Form.Common.Title"]"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0">
+            <v-input id="Product"></v-input>
+            <v-input id="SumToCredit" type="number"></v-input>
+            <v-input id="Period" type="number"></v-input>
+            <v-select id="LivingIn"></v-select>
+            <v-textarea id="LivingAddress"></v-textarea>
+
+            <v-input id="Education"></v-input>
+            <v-select id="MaritalStatus"></v-select>
+            <v-input id="MaritalPartnerName"></v-input>
+            <v-input id="MaritalPartnerCell"></v-input>
+            <v-input id="ChildrenUnder18" type="number"></v-input>
+            <v-input id="OrganizationType"></v-input>
+            <v-textarea id="OrganizationNameAndAddress"></v-textarea>
+            <v-input id="JobTitle"></v-input>
+            <v-input id="JobExpirienceLast"></v-input>
+            <v-input id="JobExpirienceTotal"></v-input>
+            <v-input id="JobPartnerNameAndCell"></v-input>
+            <v-input id="IncomeAverage"></v-input>
+            <v-select id="HaveACar"></v-select>
+            <v-select id="HaveAProperty"></v-select>
+            <v-input id="PropertyType"></v-input>
+            <v-select id="HaveActiveCredit"></v-select>
+            <v-input id="MonthlyPaymentCredit"></v-input>
+            <v-input id="RelativeNameAndCell"></v-input>
+            <v-input id="Passphrase"></v-input>
+        </b-form-group>
+        
+        
+        
+    </b-card>
+</b-container>
+
+<b-container class="mt-3">
+    <b-row class="text-center">
+        <b-col>
+            <b-button variant="primary" v-on:click="sendApplication" id="SendApplication">@Localizer["Button.SendApplication"]</b-button>
+        </b-col>
+    </b-row>
+</b-container>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/coop.applyForCredit.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/coop.applyForCredit.min.js" asp-append-version="true"></script>
+    </environment>
+}

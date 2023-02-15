@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model AddFirstImmovablesViewModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div role="tablist">
+      
+      <b-card no-body class="mb-1" v-for="item in m.Immovables">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block href="#" v-b-toggle.accordion-1 variant="info">{{item.ContractNo}}</b-button>
+      </b-card-header>
+      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+            <b-card-text v-for="f in item.FeesBeforePurchase">
+                {{f.PaymentDate}}: {{f.Amount}}
+            </b-card-text>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+
+    </div>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/coop.showPayments.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/coop.showPayments.min.js" asp-append-version="true"></script>
+    </environment>
+}

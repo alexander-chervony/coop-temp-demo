@@ -1,0 +1,22 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsActiveX", "AwsActiveX\AwsActiveX.csproj", "{EDC30C83-5738-4513-9C8E-9E8AB54D7908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsActiveX.Tests", "AwsActiveX.Tests\AwsActiveX.Tests.csproj", "{C4E8E0BF-86AE-4E46-A2AE-96F555316D38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDC30C83-5738-4513-9C8E-9E8AB54D7908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC30C83-5738-4513-9C8E-9E8AB54D7908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC30C83-5738-4513-9C8E-9E8AB54D7908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC30C83-5738-4513-9C8E-9E8AB54D7908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E8E0BF-86AE-4E46-A2AE-96F555316D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E8E0BF-86AE-4E46-A2AE-96F555316D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E8E0BF-86AE-4E46-A2AE-96F555316D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E8E0BF-86AE-4E46-A2AE-96F555316D38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+@using Microsoft.AspNetCore.Identity
+@using CoOp.Web
+@using CoOp.Web.Models
+@using CoOp.Web.Models.AccountViewModels
+@using CoOp.Web.Models.ManageViewModels
+@using CoOp.Web.Identity
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, CoOp.Web
+

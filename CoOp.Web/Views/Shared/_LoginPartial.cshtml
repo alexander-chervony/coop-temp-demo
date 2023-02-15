@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <b-nav-item-dropdown text="@UserManager.GetUserName(User)" right>
+        <b-dropdown-item href="/Manage/Index">@Localizer["MenuItem.Profile.Text"]</b-dropdown-item>
+        <b-dropdown-item href="/Account/Logout">@Localizer["MenuItem.Logout.Text"]</b-dropdown-item>
+    </b-nav-item-dropdown>
+}
+else
+{
+    <b-nav-item-dropdown text="@Localizer["MenuItem.Entrance.Text"]" right>
+        <b-dropdown-item href="/Account/Login">@Localizer["MenuItem.Login.Text"]</b-dropdown-item>
+        <b-dropdown-item href="/Account/Register">@Localizer["MenuItem.Register.Text"]</b-dropdown-item>
+    </b-nav-item-dropdown>
+}

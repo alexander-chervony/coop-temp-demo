@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container-fluid">
+
+    <h1>@ViewData["Title"]</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            <!-- todo: make this page coop home and just vary the title and discounts info based on referral cookie -->
+            Поздравляем!! Вы приглашены в кооператив!
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Мы предлагаем гораздо более выгодные и осуществимые условия по приобретению собственного жилья, чем кредитование в банке!</h5>
+                <p class="card-text">
+                Наши преимущества:<br/>
+                Воспользуйтесь калькулятором чтобы сравнить выигрыш в деньгах по сравнению с кредитом в банке<br/>
+                Вступить в кооператив может любой человек: нас не интересует ваш доход, поручители и т.п.<br/>
+                Если вы не сможете платить взносы по какой-либо причине, то договор членства в кооперативе будет расторгнут, а деньги (с процентами) возвращены.<br/>
+                Кроме того, вступая в кооператив, вы будете застрахованы от колебаний курса валют, так как мы не храним деньги, а сразу покупаем недвижимость<br/>
+                ....<br/>
+                Кроме всего прочего, вам положена скидка на вступительный взнос, так как вас пригласил друг!<br/>
+                </p>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <p class="card-text">                        
+                        Вступите в кооператив, чтобы воспользоваться выгодным предложением!
+                        <a href="@Url.Action("RegisterMember", "CoOp")" class="btn btn-primary">Вступить в кооператив!</a>
+                    </p>               
+                }
+                else
+                {
+                    <p class="card-text">
+                        Зарегистрируйтесь на сайте, пожалуйста, а затем, вступите в кооператив, чтобы воспользоваться выгодным предложением!
+                        <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Зарегистрироваться!</a>
+                    </p>
+                }
+         </div>
+    </div>
+</div>
+

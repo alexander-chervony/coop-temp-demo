@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.435" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.0" />
+    <PackageReference Include="Autofac" Version="4.9.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="EventFlow" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.AspNetCore" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.Autofac" Version="0.77.4077" />
+    <PackageReference Include="EventFlow.MsSql" Version="0.77.4077" />
+    <PackageReference Include="MailKit" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="AspNet.Security.OAuth.Vkontakte" Version="3.0.0" />
+    <PackageReference Include="Digillect.AspNetCore.Authentication.Odnoklassniki" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoOp.Domain.Queries.InMemory\CoOp.Domain.Queries.InMemory.csproj" />
+    <ProjectReference Include="..\CoOp.Domain.Sqs\CoOp.Domain.Sqs.csproj" />
+    <ProjectReference Include="..\CoOp.Domain.Tests.Data\CoOp.Domain.Tests.Data.csproj" />
+    <ProjectReference Include="..\CoOp.Domain\CoOp.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Controllers\" />
+    <Folder Include="Resources\Models\" />
+    <Folder Include="Views\CoOp\Shared" />
+    <Folder Include="wwwroot\js\Vue\Components\coop\" />
+    <Folder Include="wwwroot\js\Vue\Components\other\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\RegisterMemberViewModelValidator.cs" />
+    <Compile Remove="Models\Enums\DocumentType.cs" />
+    <Compile Remove="Views\Shared\EditorTemplates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Shared\EditorTemplates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\EditorTemplates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\EditorTemplates\**" />
+    <Content Update="Views\ApplyForCredit\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\js\Vue\coop.applyForCredit.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Date.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Email.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Integer.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Number.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Password.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\String.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Time.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\EditorTemplates\Url.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\kendo\js\cultures\kendo.culture.ru-RU.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\kendo\js\cultures\kendo.culture.ru-RU.min.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\kendo\js\messages\kendo.messages.ru-RU.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\kendo\js\messages\kendo.messages.ru-RU.min.js.map" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.SQS" Version="3.3.102.39" />
+      <PackageReference Include="EventFlow" Version="0.77.4077" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CoOp.Domain\CoOp.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

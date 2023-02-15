@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+
+<b-alert
+    :show="dismissCountDown"
+    dismissible
+    variant="success"
+    @@dismissed="onDismissed"
+    @@dismiss-count-down="countDownChanged">
+
+    <h4 class="alert-heading">Well done!</h4>
+    <p>
+        Aww yeah, you successfully read this important alert message. This example text is going to
+        run a bit longer so that you can see how spacing within an alert works with this kind of
+        content.
+    </p>
+    <hr>
+
+    <p>This alert will dismiss after {{ dismissCountDown }} seconds...</p>
+    <b-progress
+        variant="success"
+        :max="dismissSecs"
+        :value="dismissCountDown"
+        height="4px">
+    </b-progress>
+</b-alert>
+
+
+<div class="row justify-content-md-center mt-5" v-if="loaded">
+    <div class="col-sm-6">
+        <b-card
+            title="Card Title"
+            img-src="https://picsum.photos/600/300"
+            img-alt="Image"
+            img-top
+            tag="article">
+            <b-card-text>
+                @Localizer["ImmovablesPrice.Description"]. @Localizer["ContractTermYears.Description"] 
+            </b-card-text>
+
+            <v-input
+                id="ImmovablesPrice"
+                type="range"
+                min="m.MinImmovablesPrice"
+                max="m.MaxImmovablesPrice"
+                step="1000"
+                description="true">
+            </v-input>
+
+            <v-input
+                id="ContractTermYears"
+                type="range"
+                min="m.MinContractTermYears"
+                max="m.MaxContractTermYears"
+                step="1"
+                description="true">
+            </v-input>
+            
+            <b-button variant="primary" v-on:click="addFirstImmovables" id="addFirstImmovables">@Localizer["Button.Text"]</b-button>
+        </b-card>
+    </div>
+</div>
+
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/coop.addFirstImmovables.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/coop.addFirstImmovables.min.js" asp-append-version="true"></script>
+    </environment>
+}

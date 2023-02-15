@@ -1,0 +1,213 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Authorization 
+@inject IAuthorizationService AuthorizationService
+@inject UserManager<ApplicationUser> UserManager
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+@{
+    var isFounder = (await AuthorizationService.AuthorizeAsync(User, "Founder")).Succeeded ? 1 : 0;   
+}
+
+<b-container fluid>
+<h1>founder: @isFounder</h1>
+
+<div class="row mb-4 mt-4">
+    <div class="col">
+        <b-button variant="outline-secondary" v-on:click="displayMembers('Add1ActiveMember')">Add Active Member</b-button>
+        <b-button variant="outline-secondary" v-on:click="displayMembers('Add10ActiveMembers')">Add 10 Active Members</b-button>
+        <b-button variant="outline-secondary" v-on:click="displayMembers('Add1MonthPayments')">Add Month Payments</b-button>
+        <b-button variant="outline-secondary" v-on:click="displayMembers('Add12MonthPayments')">Add 12 Month Payments</b-button>
+    </div>
+    
+<div class="col-lg-5 col-xl-5 col-md-5" v-if="loaded">
+    <b-card title="Инфо по кооперативу">
+        <b-card-text>Пользователей: <b>@UserManager.Users.Count()</b></b-card-text>
+        <b-card-text>С договором: <b>{{totalImmovables}}</b>, активных: <b>{{activeImmovables}}<template v-if="m.CurrentTotalEntranceFeesString"> &mdash; {{m.CurrentTotalEntranceFeesString}}</template></b>, пассивных: <b>{{m.NewImmovables.length}}</b></b-card-text>
+        <b-card-text>Не в очереди: <b>{{m.EntranceFeePaidImmovables.length}}</b>, в очереди: <b>{{m.InQueueImmovables.length}}</b>, в процессе: <b>{{m.InPurchaseListImmovables.length}}</b>, 
+            куплено: <b>{{m.PurchasedImmovables.length}}</b></b-card-text>
+    </b-card>
+</div>
+</div>
+
+    <b-card-group deck v-if="loaded">
+        
+        <b-card header-tag="header" footer-tag="footer">
+            <template v-slot:header>
+                <h6 class=" d-flex justify-content-between align-items-center">
+                    @Localizer["ImmovablesContractsWaitingToGetInQueue"]: {{m.EntranceFeePaidImmovables.length}}
+                </h6>
+            </template>
+            
+            <table class="table table-hover table-borderless">
+                <tbody>
+                <tr is="immovables-item"
+                    v-for="(item, index) in m.EntranceFeePaidImmovables"
+                    v-bind:immovables="item"
+                    v-bind:index="index"
+                    v-bind:type="'waiting'"
+                    v-bind:key="item.ContractNo"
+                    v-bind:isfounder="@isFounder"    
+                    v-on:add-payment="onAddPayment"
+                    v-on:impersonate="onImpersonate">
+                </tr>
+                </tbody>
+            </table>
+        </b-card>
+        
+        
+        <b-card header-tag="header" footer-tag="footer">
+            <template v-slot:header>
+                <h6 class=" d-flex justify-content-between align-items-center">
+                    @Localizer["ListOfImmovablesContractsInQueue"]: {{m.InQueueImmovables.length}} 
+                    <span class="badge">Накоплено: {{m.CurrentTotalAvailableFundForImmovablesString}}</span>
+                </h6>
+            </template>
+                <table class="table table-hover table-borderless">
+                    <tbody>
+                    <tr is="immovables-item"
+                        v-for="(item, index) in m.InQueueImmovables"
+                        v-bind:immovables="item"
+                        v-bind:index="index"
+                        v-bind:key="item.ContractNo"
+                        v-bind:type="'inQueue'"
+                        v-bind:accumulated="m.CurrentTotalAvailableFundForImmovables"
+                        v-bind:isfounder="@isFounder"
+                        v-on:add-payment="onAddPayment"
+                        v-on:initiate-purchase="onInitiateImmovablesPurchase"
+                        v-on:impersonate="onImpersonate">
+                    </tr>
+                    </tbody>
+                </table>
+        </b-card>
+
+        <b-card header-tag="header" footer-tag="footer">
+            <template v-slot:header>
+                <h6 class=" d-flex justify-content-between align-items-center">
+                    @Localizer["ListOfReadyToPurchaseMembers"]: {{m.InPurchaseListImmovables.length}} 
+                    <span class="badge">Зарезервировано: {{m.CurrentTotalReservedForPurchasesString}}</span>
+                </h6>
+            </template>
+                <table class="table table-hover table-borderless">
+                    <tbody>
+                    <tr is="immovables-item"
+                        v-for="(item, index) in m.InPurchaseListImmovables"
+                        v-bind:immovables="item"
+                        v-bind:index="index"
+                        v-bind:key="item.ContractNo"
+                        v-bind:type="'readyToBuy'"
+                        v-bind:isfounder="@isFounder"
+                        v-on:mark-purchased="onMarkImmovablesPurchased"
+                        v-on:impersonate="onImpersonate">
+                    </tr>
+                    </tbody>
+                </table>
+        </b-card>
+    </b-card-group>
+
+    
+    <b-card-group deck class="mt-3" v-if="loaded">
+        <b-card header-tag="header" class="text-center">
+            <template v-slot:header>
+                <h6 class=" d-flex justify-content-between align-items-center">
+                    @Localizer["ListOfPurchasedMembers"]: {{m.PurchasedImmovables.length}} 
+                    <span class="badge">@Localizer["TotalPurchasedImmovables"]: {{m.TotalPurchasedImmovablesFormatted}} &mdash; <i class="text-success">{{m.TotalPurchasedImmovablesFormattedPercent}}</i></span>
+                </h6>
+            </template>
+            <table class="table table-hover table-borderless">
+                <tbody>
+                <tr is="immovables-item"
+                    v-for="(item, index) in m.PurchasedImmovables"
+                    v-bind:immovables="item"
+                    v-bind:index="index"
+                    v-bind:key="item.ContractNo"
+                    v-bind:type="'bought'"
+                    v-bind:isfounder="@isFounder"
+                    v-on:add-payment="onAddPayment"
+                    v-on:impersonate="onImpersonate">
+                </tr>
+                </tbody>
+            </table>
+        </b-card>
+    
+    </b-card-group>
+    
+  
+    
+    
+    <!---->
+    <template v-if="loaded && m.AllMembers['@User.GetMemberId()'] && m.AllMembers['@User.GetMemberId()'].Immovables && m.AllMembers['@User.GetMemberId()'].Immovables[0] && m.AllMembers['@User.GetMemberId()'].Immovables[0].Fees && m.AllMembers['@User.GetMemberId()'].Immovables[0].Fees.EntranceFee">  
+        
+        <b-card-group deck class="mt-3">
+                <b-card header-tag="header">
+                    <template v-slot:header>
+                        <h6 class=" d-flex justify-content-between align-items-center">
+                            @Localizer["ListOfMyPayments"] 
+                            <span class="badge">{{m.AllMembers['@User.GetMemberId()'].Immovables[0].FirstName}}
+                                {{m.AllMembers['@User.GetMemberId()'].Immovables[0].MiddleName}}
+                                {{m.AllMembers['@User.GetMemberId()'].Immovables[0].SurnameInitial}}</span>
+                        </h6>
+                    </template>
+        
+        
+                <table class="table table-borderless table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Платёж</th>
+                        <th scope="col">Инфл мне</th>
+                        <th scope="col">Инфл я плачу</th>
+                        <th scope="col">За пользование <small class="text-success">{{m.AllMembers['@User.GetMemberId()'].Immovables[0].CurrentCoopInterestRate}}</small></th>
+                        <th scope="col">В накопление мне</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <tr is="payment-item-before"
+                        v-for="(item, index) in m.AllMembers['@User.GetMemberId()'].Immovables[0].Fees.FeesBeforePurchase"
+                        v-bind:payment="item"
+                        v-bind:index="index"
+                        v-bind:key="item.Id">
+                    </tr>
+
+                    <tr is="payment-item-after"
+                        v-for="(item, index) in m.AllMembers['@User.GetMemberId()'].Immovables[0].Fees.FeesAfterPurchase"
+                        v-bind:payment="item"
+                        v-bind:index="index"
+                        v-bind:key="item.Id">
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <th scope="row">{{m.AllMembers['@User.GetMemberId()'].Immovables[0].AccumulatedTotalFormatted}}</th>
+                    </tr>
+                            
+                    </tbody>
+                </table>
+                
+                       </b-card>
+                    
+                    </b-card-group>
+    </template>
+    
+</b-container>
+
+@section Scripts {
+    <environment names="Development,Local">
+        <script src="~/js/Vue/coop.displayMembers.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/coop.displayMembers.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+
+

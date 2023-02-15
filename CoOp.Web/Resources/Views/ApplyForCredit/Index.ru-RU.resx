@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  
+  
+  
+  
+  <data name="Title" xml:space="preserve">
+    <value>Анкета для оформления кредита</value>
+  </data>
+  <data name="Form.Contact.Title" xml:space="preserve">
+    <value>Персональные данные</value>
+  </data>
+  <data name="Fio.Label" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="Fio.Placeholder" xml:space="preserve">
+    <value>фамилия имя отчество</value>
+  </data>
+  <data name="LastNameOld.Label" xml:space="preserve">
+    <value>Девичья фамилия</value>
+  </data>
+  <data name="LastNameOld.Placeholder" xml:space="preserve">
+    <value>девичья фамилия</value>
+  </data>
+  <data name="CellPhoneNumber.Label" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="CellPhoneNumber.Placeholder" xml:space="preserve">
+    <value>375291234567</value>
+  </data>
+  
+   
+  
+  
+  <data name="Form.Document.Title" xml:space="preserve">
+    <value>Документ</value>
+  </data>
+  <data name="DocumentType.Label" xml:space="preserve">
+    <value>Тип документа</value>
+  </data>
+
+  <data name="BirthDate.Label" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+
+  <data name="PassportSn.Label" xml:space="preserve">
+    <value>Номер паспорта</value>
+  </data>
+  <data name="PassportSn.Placeholder" xml:space="preserve">
+    <value>Номер паспорта</value>
+  </data>
+  <data name="PassportPn.Label" xml:space="preserve">
+    <value>Личный номер</value>
+  </data>
+  <data name="PassportPn.Placeholder" xml:space="preserve">
+    <value>Личный номер</value>
+  </data>
+  <data name="PassportIssuedBy.Label" xml:space="preserve">
+    <value>Кем выдан</value>
+  </data>
+  <data name="PassportIssuedBy.Placeholder" xml:space="preserve">
+    <value>кем выдан</value>
+  </data>
+  <data name="PassportIssuedDate.Label" xml:space="preserve">
+    <value>Дата Выдачи</value>
+  </data>
+  <data name="PassportExpDate.Label" xml:space="preserve">
+    <value>Срок действия</value>
+  </data>
+    <data name="Address.Label" xml:space="preserve">
+    <value>Адрес регистрации</value>
+  </data>
+  <data name="Address.Placeholder" xml:space="preserve">
+    <value>адрес регистрации</value>
+  </data>
+
+
+
+
+
+  <data name="Form.Common.Title" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="Product.Label" xml:space="preserve">
+    <value>Товар</value>
+  </data>
+  <data name="Product.Placeholder" xml:space="preserve">
+    <value>например, кольцо, браслет</value>
+  </data>
+  <data name="SumToCredit.Label" xml:space="preserve">
+    <value>Сумма кредита</value>
+  </data>
+  <data name="SumToCredit.Placeholder" xml:space="preserve">
+    <value>в рублях</value>
+  </data>
+  
+  <data name="Period.Label" xml:space="preserve">
+    <value>Период кредитования</value>
+  </data>
+  <data name="Period.Placeholder" xml:space="preserve">
+    <value>на сколько месяцев</value>
+  </data>
+
+  <data name="LivingIn.Label" xml:space="preserve">
+    <value>Тип жилья</value>
+  </data>
+  <data name="LivingIn.Placeholder" xml:space="preserve">
+    <value>своё/арендую/у родителей</value>
+  </data>
+  
+  <data name="LivingAddress.Label" xml:space="preserve">
+    <value>Адрес проживания</value>
+  </data>
+  <data name="LivingAddress.Placeholder" xml:space="preserve">
+    <value>адрес проживания</value>
+  </data>
+  <data name="Education.Label" xml:space="preserve">
+    <value>Образование</value>
+  </data>
+  <data name="Education.Placeholder" xml:space="preserve">
+    <value>высшее/среднее/специальное</value>
+  </data>
+  <data name="MaritalStatus.Label" xml:space="preserve">
+    <value>Семейное положение</value>
+  </data>
+  <data name="MaritalStatus.Placeholder" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="MaritalPartnerName.Label" xml:space="preserve">
+    <value>Имя жены/мужа</value>
+  </data>
+  <data name="MaritalPartnerName.Placeholder" xml:space="preserve">
+    <value>имя жены/мужа</value>
+  </data>
+  <data name="MaritalPartnerCell.Label" xml:space="preserve">
+    <value>Номер мобильного жены/мужа</value>
+  </data>
+  <data name="MaritalPartnerCell.Placeholder" xml:space="preserve">
+    <value>Номер мобильного жены/мужа</value>
+  </data>
+  <data name="ChildrenUnder18.Label" xml:space="preserve">
+    <value>Сколько детей до 18</value>
+  </data>
+  <data name="ChildrenUnder18.Placeholder" xml:space="preserve">
+    <value>количество</value>
+  </data>
+  <data name="OrganizationType.Label" xml:space="preserve">
+    <value>Деятельность ИП или организации</value>
+  </data>
+  <data name="OrganizationType.Placeholder" xml:space="preserve">
+    <value>основное направление деятельности</value>
+  </data>
+  <data name="OrganizationNameAndAddress.Label" xml:space="preserve">
+    <value>Наименование и адрес организации</value>
+  </data>
+  <data name="OrganizationNameAndAddress.Placeholder" xml:space="preserve">
+    <value>например, ИП или ООО Алло, Шевченко 27, офис 2-5</value>
+  </data>
+  <data name="JobTitle.Label" xml:space="preserve">
+    <value>Должность</value>
+  </data>
+  <data name="JobTitle.Placeholder" xml:space="preserve">
+    <value>должность в данной организации</value>
+  </data>
+  <data name="JobExpirienceLast.Label" xml:space="preserve">
+    <value>На последнем месте работы</value>
+  </data>
+  <data name="JobExpirienceLast.Placeholder" xml:space="preserve">
+    <value>сколько месяцев/лет</value>
+  </data>
+  <data name="JobExpirienceTotal.Label" xml:space="preserve">
+    <value>Общий стаж</value>
+  </data>
+  <data name="JobExpirienceTotal.Placeholder" xml:space="preserve">
+    <value>сколько месяцев/лет</value>
+  </data>
+  <data name="JobPartnerNameAndCell.Label" xml:space="preserve">
+    <value>Имя и номер коллеги</value>
+  </data>
+  <data name="JobPartnerNameAndCell.Placeholder" xml:space="preserve">
+    <value>имя и номер мобильного телефона коллеги</value>
+  </data>
+  <data name="IncomeAverage.Label" xml:space="preserve">
+    <value>Средний доход</value>
+  </data>
+  <data name="IncomeAverage.Placeholder" xml:space="preserve">
+    <value>в месяц</value>
+  </data>
+  <data name="HaveACar.Label" xml:space="preserve">
+    <value>Есть ли автомобиль</value>
+  </data>
+  <data name="HaveACar.Placeholder" xml:space="preserve">
+    <value>да/нет</value>
+  </data>
+  <data name="HaveAProperty.Label" xml:space="preserve">
+    <value>Есть ли недвижимость</value>
+  </data>
+  <data name="HaveAProperty.Placeholder" xml:space="preserve">
+    <value>да/нет</value>
+  </data>
+  <data name="PropertyType.Label" xml:space="preserve">
+    <value>Тип недвижимости</value>
+  </data>
+  <data name="PropertyType.Placeholder" xml:space="preserve">
+    <value>квартира/дача/участок</value>
+  </data>
+
+  <data name="HaveActiveCredit.Label" xml:space="preserve">
+    <value>Есть ли кредит</value>
+  </data>
+  <data name="HaveActiveCredit.Placeholder" xml:space="preserve">
+    <value>в данный момент</value>
+  </data>
+  <data name="MonthlyPaymentCredit.Label" xml:space="preserve">
+    <value>Ежемесячный платёж</value>
+  </data>
+  <data name="MonthlyPaymentCredit.Placeholder" xml:space="preserve">
+    <value>по кредиту</value>
+  </data>
+  <data name="RelativeNameAndCell.Label" xml:space="preserve">
+    <value>Близкий родственник</value>
+  </data>
+  <data name="RelativeNameAndCell.Placeholder" xml:space="preserve">
+    <value>имя и номер телефона</value>
+  </data>
+  <data name="Passphrase.Label" xml:space="preserve">
+    <value>Кодовое слово</value>
+  </data>
+  <data name="Passphrase.Placeholder" xml:space="preserve">
+    <value>например, девичья фамилия матери</value>
+  </data>
+
+  <data name="Button.SendApplication" xml:space="preserve">
+    <value>Отправить заявку</value>
+  </data>
+  <data name="SelectValue.true" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="SelectValue.false" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  
+</root>
